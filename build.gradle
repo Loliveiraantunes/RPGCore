@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+}
+
+group 'com.rpg'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+    maven { url "https://repo.dmulloy2.net/repository/public/" }
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+    compileOnly 'org.spigotmc:spigot-api:1.19-R0.1-SNAPSHOT'
+    compileOnly 'commons-io:commons-io:2.11.0'
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    compileOnly group: "com.comphenix.protocol", name: "ProtocolLib", version: "4.8.0"
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.24'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
+    implementation("jakarta.persistence:jakarta.persistence-api:3.1.0")
+
+    compileOnly 'mysql:mysql-connector-java:8.0.30'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+processResources {
+    doFirst {
+        file("$buildDir/resource/main").listFiles().each {it.delete()}
+    }
+}

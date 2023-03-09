@@ -1,0 +1,19 @@
+name: RPGCore
+main: com.rpg.RPGCore
+author: AlphaDev_
+description: This plugin is a core of a ruge system of Role Playing Game mechanics.
+version: 1.0
+api-version: 1.13
+depend: [ProtocolLib]
+commands:
+  rpg:
+    description: use commando to interact with a new world of RPG.
+    aliases:
+      - start
+      - class
+  status:
+    description: open player status menu.
+  class:
+    description: show class options.
+  leveltop:
+    description: Show top Level Players List.

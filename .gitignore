@@ -1,0 +1,8 @@
+#ignoring .idea default
+.idea/
+/target/
+/out/
+LevelingSystem.iml
+
+#ignoring output generated
+output/
