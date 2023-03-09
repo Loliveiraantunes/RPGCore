@@ -57,7 +57,7 @@ public class LoaderPlayerStatusService {
         StringBuilder percentString = new StringBuilder();
 
         for (int i = 0; i < (9L * percent/ 100); i++) {
-            percentString.append("▒");
+            percentString.append("█");
         }
 
       return percentString.toString();

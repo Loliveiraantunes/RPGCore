@@ -46,7 +46,7 @@ public class ActionBarService {
         int health = configPlayers.getConfiguration(player).getInt(HEALTH);
         int maxHealth = configPlayers.getConfiguration(player).getInt("maxHealth");
 
-        displayText.append(ChatColorUtil.textColor("? "+health+" ? "+maxHealth, ChatColor.RED));
+        displayText.append(ChatColorUtil.textColor("❤ "+health+" | "+maxHealth, ChatColor.RED));
     }
 
     public static void buildNoticeStatus(Player player, String message){
@@ -59,7 +59,7 @@ public class ActionBarService {
         int currentMana = configPlayers.getConfiguration(player).getInt("mana");
         int maxMana = configPlayers.getConfiguration(player).getInt("maxMana");
 
-        displayText.append(ChatColorUtil.textColor("? "+currentMana+" ? "+maxMana, ChatColor.AQUA));
+        displayText.append(ChatColorUtil.textColor("♦ "+currentMana+" | "+maxMana, ChatColor.AQUA));
     }
 
     public static void onPlayerRegainHealth(EntityRegainHealthEvent event){
