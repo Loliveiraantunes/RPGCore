@@ -69,8 +69,7 @@ public class HealthBossBar {
                 Bukkit.getScheduler().cancelTask(taskIDByPlayer.get(player.getUniqueId()));
                 taskIDByPlayer.remove(player.getUniqueId());
             }
-
-            if (entity.getHealth() > 0) {
+            if (!entity.isDead()) {
                 bb.setTitle(ChatColorUtil.boldText(title, ChatColor.RED) + " - " + secondsRemaning + TranslateUtil.getKey("SEC"));
                 bb.setProgress(entity.getHealth() / Objects.requireNonNull(entity.getAttribute(Attribute.GENERIC_MAX_HEALTH)).getValue());
             } else {
