@@ -14,6 +14,7 @@ import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.plugin.Plugin;
 
@@ -155,6 +156,15 @@ public class PlayerDamageService {
         Player player = (Player) event.getDamager();
 
         HealthBossBar.openBossHealthBar(player,event.getEntity());
+    }
+
+    public static void  showHealthBossBarWhenProjectile(ProjectileHitEvent event){
+        if(!(event.getEntity().getShooter() instanceof Player))
+            return;
+
+        Player player = (Player) event.getEntity().getShooter();
+
+        HealthBossBar.openBossHealthBar(player,event.getHitEntity());
     }
 
 

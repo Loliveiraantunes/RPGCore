@@ -8,6 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 
 public class DamageEventListeners implements Listener {
@@ -32,5 +33,9 @@ public class DamageEventListeners implements Listener {
     public void onPlayerHit(EntityDamageByEntityEvent event){
         PlayerDamageService.onPlayerHit(event);
         PlayerDamageService.showHealthBossBarWhenHit(event);
+    }
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onPlayerHit(ProjectileHitEvent event){
+        PlayerDamageService.showHealthBossBarWhenProjectile(event);
     }
 }

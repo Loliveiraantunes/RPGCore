@@ -9,12 +9,14 @@ import com.rpg.listeners.ActionsEventListeners;
 import com.rpg.listeners.DamageEventListeners;
 import com.rpg.listeners.JoinEventListeners;
 import com.rpg.packages.DamageIndicator;
+import com.rpg.packages.HealthBossBar;
 import com.rpg.repository.impl.PlayerStatusImpl;
 import com.rpg.service.LoaderPlayerStatusService;
 import com.rpg.util.colorutil.ChatColorUtil;
 import com.rpg.util.config.ConfigRPG;
 import com.rpg.util.config.ConfigLeveling;
 import com.rpg.util.config.ConfigTranslateFiles;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
@@ -74,7 +76,8 @@ public class RPGCore extends JavaPlugin {
                 DamageIndicator.damageIndicatorsEntities.remove(key);
                 entity.remove();
             });
-
+        HealthBossBar.clearAllBossBar();
+        Bukkit.getScheduler().cancelTasks(this);
         HandlerList.unregisterAll();
     }
 
