@@ -18,13 +18,14 @@ import com.rpg.util.config.ConfigLeveling;
 import com.rpg.util.config.ConfigTranslateFiles;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.NamespacedKey;
+import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.Objects;
 
 public class RPGCore extends JavaPlugin {
 
@@ -39,12 +40,12 @@ public class RPGCore extends JavaPlugin {
 
         loadConfigurations();
 
-        boadcast(ChatColorUtil.boldText("======================", ChatColor.GOLD));
-        boadcast(ChatColorUtil.boldText("[RPGCore] ", ChatColor.GREEN));
-        boadcast(ChatColorUtil.textColor(" Loaded Version: "+getPlugin().getDescription().getVersion(), ChatColor.GREEN));
-        boadcast(ChatColorUtil.textColor(" Author: "+getPlugin().getDescription().getAuthors(), ChatColor.GREEN));
-        boadcast(ChatColorUtil.textColor(" Description: \n "+ChatColor.GRAY+getPlugin().getDescription().getDescription(), ChatColor.GREEN));
-        boadcast(ChatColorUtil.boldText("======================", ChatColor.GOLD));
+        broadcast(ChatColorUtil.boldText("======================", ChatColor.GOLD));
+        broadcast(ChatColorUtil.boldText("[RPGCore] ", ChatColor.GREEN));
+        broadcast(ChatColorUtil.textColor(" Loaded Version: "+getPlugin().getDescription().getVersion(), ChatColor.GREEN));
+        broadcast(ChatColorUtil.textColor(" Author: "+getPlugin().getDescription().getAuthors(), ChatColor.GREEN));
+        broadcast(ChatColorUtil.textColor(" Description: \n "+ChatColor.GRAY+getPlugin().getDescription().getDescription(), ChatColor.GREEN));
+        broadcast(ChatColorUtil.boldText("======================", ChatColor.GOLD));
     }
 
     @Override
@@ -59,7 +60,6 @@ public class RPGCore extends JavaPlugin {
         pluginManager.registerEvents(new SquireMenu(),this);
         pluginManager.registerEvents(new StatusMenu(),this);
 
-
         getCommand(CommandsEnum.RPG.name()).setExecutor(new BasicRPGCommand());
         getCommand(CommandsEnum.CLASS.name()).setExecutor(new BasicRPGCommand());
         getCommand(CommandsEnum.LEVELTOP.name()).setExecutor(new BasicRPGCommand());
@@ -71,11 +71,7 @@ public class RPGCore extends JavaPlugin {
     public void onDisable() {
         super.onDisable();
 
-        if(DamageIndicator.damageIndicatorsEntities.size() > 0)
-            DamageIndicator.damageIndicatorsEntities.forEach((key,entity)->{
-                DamageIndicator.damageIndicatorsEntities.remove(key);
-                entity.remove();
-            });
+        DamageIndicator.removeAllDamageIndicators();
         HealthBossBar.clearAllBossBar();
         Bukkit.getScheduler().cancelTasks(this);
         HandlerList.unregisterAll();
@@ -100,7 +96,7 @@ public class RPGCore extends JavaPlugin {
         RPGCore.getPlugin().getServer().getLogger().info(msg);
     }
 
-    public static void boadcast(String msg){
+    public static void broadcast(String msg){
         RPGCore.getPlugin().getServer().broadcastMessage(msg);
     }
 

@@ -1,8 +1,10 @@
 #ignoring .idea default
 .idea/
+.gradle/
 /target/
 /out/
 LevelingSystem.iml
+build/
 
 #ignoring output generated
 output/

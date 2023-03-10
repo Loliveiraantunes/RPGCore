@@ -45,10 +45,12 @@ public class HealthBossBar {
        if(playerTargetBossBar.get(player.getUniqueId()) != null)
            clearBossBar(playerTargetBossBar.get(player.getUniqueId()), player);
 
+       double progressbar = entity.getHealth() / Objects.requireNonNull(entity.getAttribute(Attribute.GENERIC_MAX_HEALTH)).getValue();
+
 
         BossBar bb = Bukkit.createBossBar( ChatColorUtil.boldText(title, ChatColor.RED), barColor, barStyle, BarFlag.values());
         bb.addPlayer(player);
-        bb.setProgress(entity.getHealth() / Objects.requireNonNull(entity.getAttribute(Attribute.GENERIC_MAX_HEALTH)).getValue());
+        bb.setProgress(progressbar);
         bb.setVisible(true);
         playerTargetBossBar.put(player.getUniqueId(), bb);
 

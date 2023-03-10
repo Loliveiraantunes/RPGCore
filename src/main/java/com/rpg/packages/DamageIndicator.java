@@ -1,15 +1,11 @@
 package com.rpg.packages;
 
-import com.comphenix.protocol.events.PacketContainer;
 import com.rpg.RPGCore;
 import com.rpg.util.colorutil.ChatColorUtil;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.entity.*;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.scheduler.BukkitScheduler;
 
 import java.util.*;
@@ -37,18 +33,17 @@ public class DamageIndicator {
     }
 
     private void buildArmorStand(Entity entity,Location location , String damage){
-
         BukkitScheduler scheduler =  Bukkit.getServer().getScheduler();
 
         World world = entity.getWorld();
         ArmorStand armorStand = (ArmorStand) world.spawnEntity( location, EntityType.ARMOR_STAND);
         armorStand.setInvulnerable(true);
         armorStand.setCollidable(false);
-        armorStand.setMetadata("DAMAGE_INDICATOR", new FixedMetadataValue(RPGCore.getPlugin(),"DAMAGE_INDICATOR"));
         armorStand.setGravity(false);
         armorStand.setVisible(false);
         armorStand.setRemoveWhenFarAway(true);
         armorStand.setCollidable(false);
+        armorStand.getPersistentDataContainer().set(new NamespacedKey(RPGCore.getPlugin(), "DAMAGE_INDICATOR"), PersistentDataType.STRING, "DAMAGE_INDICATOR");
 
         armorStand.setCustomNameVisible(true);
         armorStand.setCustomName(damage);
@@ -65,6 +60,14 @@ public class DamageIndicator {
             armorStand.remove();
             damageIndicatorsEntities.remove(armorStand.getUniqueId());
         } , 40);
+    }
+
+
+    public static void removeAllDamageIndicators(){
+        Bukkit.getServer().getWorlds().forEach(world -> world.getEntities().stream().filter(entity -> entity instanceof ArmorStand).forEach( entity -> {
+            if(entity.getPersistentDataContainer().has(new NamespacedKey(RPGCore.getPlugin(), "DAMAGE_INDICATOR"), PersistentDataType.STRING))
+                entity.remove();
+        }));
     }
 
 
