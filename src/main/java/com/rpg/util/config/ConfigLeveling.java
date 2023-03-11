@@ -4,6 +4,7 @@ import com.rpg.RPGCore;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Axolotl;
 import org.bukkit.entity.Frog;
 import org.bukkit.entity.Warden;
 import org.bukkit.plugin.Plugin;
@@ -137,6 +138,12 @@ public class ConfigLeveling {
         if (!mobExpercieSection.contains("abstract_horse"))
             mobExpercieSection.set("abstract_horse", 10);
 
+        if (!mobExpercieSection.contains("allay"))
+            mobExpercieSection.set("allay", 50);
+
+        if (!mobExpercieSection.contains("axolotl"))
+            mobExpercieSection.set("axolotl", 10);
+
         if (!mobExpercieSection.contains("bee"))
             mobExpercieSection.set("bee", 5);
 
@@ -197,11 +204,17 @@ public class ConfigLeveling {
         if (!mobExpercieSection.contains("giant"))
             mobExpercieSection.set("giant", 300);
 
+        if (!mobExpercieSection.contains("glow_squid"))
+            mobExpercieSection.set("glow_squid", 300);
+
         if (!mobExpercieSection.contains("guardian"))
             mobExpercieSection.set("guardian", 20);
 
         if (!mobExpercieSection.contains("golem"))
             mobExpercieSection.set("golem", 10);
+
+        if (!mobExpercieSection.contains("goat"))
+            mobExpercieSection.set("goat", 10);
 
         if (!mobExpercieSection.contains("horse"))
             mobExpercieSection.set("horse", 10);
@@ -259,6 +272,9 @@ public class ConfigLeveling {
 
         if (!mobExpercieSection.contains("polar_bear"))
             mobExpercieSection.set("polar_bear", 20);
+
+        if (!mobExpercieSection.contains("pufferfish"))
+            mobExpercieSection.set("pufferfish", 5);
 
         if (!mobExpercieSection.contains("rabbit"))
             mobExpercieSection.set("rabbit", 5);
