@@ -4,6 +4,7 @@ import com.rpg.RPGCore;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Warden;
 import org.bukkit.plugin.Plugin;
 
 import java.io.*;
@@ -291,7 +292,7 @@ public class ConfigLeveling {
         if (!mobExpercieSection.contains("squid"))
             mobExpercieSection.set("squid", 10);
 
-        if (!mobExpercieSection.contains("stray"))
+        if (!mobExpercieSection.contains("strider"))
             mobExpercieSection.set("strider", 15);
 
         if (!mobExpercieSection.contains("stray"))
@@ -317,6 +318,9 @@ public class ConfigLeveling {
 
         if (!mobExpercieSection.contains("wandering_trader"))
             mobExpercieSection.set("wandering_trader", 20);
+
+        if (!mobExpercieSection.contains("warden"))
+            mobExpercieSection.set("warden", 450);
 
         if (!mobExpercieSection.contains("water_bob"))
             mobExpercieSection.set("water_bob", 15);
@@ -351,12 +355,6 @@ public class ConfigLeveling {
 
         RPGCore.logInfo("[RPGCore] All Mobs: 100%");
     }
-
-
-    public File getFile() {
-        return levelingFile;
-    }
-
     public FileConfiguration getConfig() {
         return levelingFileConfiguration;
     }
