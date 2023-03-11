@@ -49,26 +49,25 @@ public class ConfigLeveling {
 
     private  void createConfigHeader(){
         List<String> header = new ArrayList<>();
-        header.add("   Basic Plugin Configuration \n " +
-                " \n" +
-                " \n" +
-                "   CONFIG:\n" +
-                "           XP_BASE_MULTIPLIER: Used to calculate the next goal of experience increasing.\n\n " +
-                "           MOB_XP_BASE: Additional experience reward for each mob killed. \n\n " +
-                "           PLAYER_XP_BASE: Additional experience reward for each player killed. \n\n " +
-                "           LEVEL_XP_MULTIPLIER: Multiplies base experience by creature level. \n\n " +
-                "           LEVEL_UP_GOLD_REWARD: Gold reward for leveling up. \n\n " +
-                "           LEVEL_ADDITIONAL_PERCENT_EVENTS: Additional percentage of experience in events.\n\n " +
-                "           XP_PLAYER_LEVEL_UP_START_REQUIRED: Value required for first level up. \n\n "+
-                "           XP_PLAYER_LEVEL_START: initial player level value. \n\n "+
-                "           GOLD_PLAYER_START: initial player gold value. \n\n "+
-                "           CORE_PER_LEVEL: Add core value when player reach next level. \n\n "+
-                "           LIFE_SCALE_ENABLE: Enable life scale by level, increasing player life. \n\n "+
-                "           LIFE_RECEIVED_PER_LEVEL: Amount of life that will increase per level. \n\n "+
-                "   MOB EXPERIENCE:" +
-                "           Added value in experience when killing the creature by the type."+
-                "\n" +
-                "\n" );
+        header.add(" \n" +
+                "**************************************************************************************\n"+
+                "* CONFIGURATION INFO                                                                 *\n"+
+                "**************************************************************************************\n"+
+                "*   XP_BASE_MULTIPLIER: Used to calculate the next goal of experience increasing.    *\n"+
+                "*   MOB_XP_BASE: Additional experience reward for each mob killed.                   *\n"+
+                "*   PLAYER_XP_BASE: Additional experience reward for each player killed.             *\n"+
+                "*   LEVEL_XP_MULTIPLIER: Multiplies base experience by creature level.               *\n"+
+                "*   LEVEL_UP_GOLD_REWARD: Gold reward for leveling up.                               *\n"+
+                "*   LEVEL_ADDITIONAL_PERCENT_EVENTS: Additional percentage of experience in events.  *\n"+
+                "*   XP_PLAYER_LEVEL_UP_START_REQUIRED: Value required for first level up.            *\n"+
+                "*   XP_PLAYER_LEVEL_START: initial player level value.                               *\n"+
+                "*   GOLD_PLAYER_START: initial player gold value.                                    *\n"+
+                "*   CORE_PER_LEVEL: Add core value when player reach next level.                     *\n"+
+                "*   LIFE_SCALE_ENABLE: Enable life scale by level, increasing player life.           *\n"+
+                "*   LIFE_RECEIVED_PER_LEVEL: Amount of life that will increase per level.            *\n"+
+                "*   MOB EXPERIENCE: Added value in experience when killing the creature by the type. *\n"+
+                "**************************************************************************************\n");
+
 
         levelingFileConfiguration.options().setHeader(header);
     }
