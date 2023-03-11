@@ -4,6 +4,7 @@ import com.rpg.RPGCore;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Frog;
 import org.bukkit.entity.Warden;
 import org.bukkit.plugin.Plugin;
 
@@ -187,6 +188,9 @@ public class ConfigLeveling {
         if (!mobExpercieSection.contains("fox"))
             mobExpercieSection.set("fox", 5);
 
+        if (!mobExpercieSection.contains("frog"))
+            mobExpercieSection.set("frog", 5);
+
         if (!mobExpercieSection.contains("ghast"))
             mobExpercieSection.set("ghast", 45);
 
@@ -351,7 +355,6 @@ public class ConfigLeveling {
 
         if (!mobExpercieSection.contains("zombified_piglin"))
             mobExpercieSection.set("zombified_piglin", 30);
-
 
         RPGCore.logInfo("[RPGCore] All Mobs: 100%");
     }
